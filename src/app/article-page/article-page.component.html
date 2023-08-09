@@ -1,0 +1,18 @@
+<div class="page-wrapper" *ngIf="page$ | async as page">
+  <div class="header-image" [style.background-image]="'url(' + page.image_url + ')'">
+  </div>
+  <div class="wrapper">
+    <div class="info-wrapper">
+      <h1 class="info-title">
+        {{page.title}}
+      </h1>
+      <span class="info-text">
+        {{page.summary}}
+      </span>
+    </div>
+    <button (click)="onclick()" class="btn-info" mat-button>
+      <img src="../../../assets/icons/Arrow - Left.svg" alt="">
+      Back to homepage
+    </button>
+  </div>
+</div>

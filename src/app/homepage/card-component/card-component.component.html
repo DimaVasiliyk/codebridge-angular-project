@@ -1,0 +1,30 @@
+<div class="loading" *ngIf="!(filterPage$ | async)?.length">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="card-wrapper">
+  <mat-card class="example-card" *ngFor="let page of (filterPage$ | async)">
+    <img mat-card-image class="mat-image" src="{{page.image_url}}"
+      alt="Photo of a Shiba Inu">
+    <mat-card-content class="card-content">
+      <div class="data-container">
+        <img class="img-calendar" src="../../../assets/icons/akar-icons_calendar.svg" alt="">
+        <span class="data-card-content">
+          {{page.published_at | customDate :"MMMM d, yyyy"}}
+        </span>
+      </div>
+      <div class="info-container">
+        <h1 class="card-title" [innerHTML]="page.title">
+        </h1>
+       <p class="card-text" [innerHTML]="page.summary">
+       </p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="card-action">
+      <button  (click)="onclick(page.id)" class="btn-info" mat-button>
+        Read more 
+        <img class="img-arrow-right" src="../../../assets/icons/Arrow - Right.svg" alt="">
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
