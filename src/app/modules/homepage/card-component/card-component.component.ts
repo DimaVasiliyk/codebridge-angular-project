@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+
 import { GetPageWithId } from 'src/app/core/storage/action/article-page.action';
 import { HomePageState } from 'src/app/core/storage/store/homepage.state';
 
@@ -13,11 +14,11 @@ import { HomePageState } from 'src/app/core/storage/store/homepage.state';
 export class CardComponentComponent implements OnInit {
   @Select(HomePageState.getFilterPage) filterPage$!: Observable<any[]>;
 
-  constructor( private router: Router,private store: Store) {}
+  constructor(private router: Router, private store: Store) { }
 
   ngOnInit() { }
-  
-  onclick(id:number){
+
+  public onclick(id: number): void {
     this.store.dispatch(new GetPageWithId(id));
     this.router.navigateByUrl('/article-page');
   }

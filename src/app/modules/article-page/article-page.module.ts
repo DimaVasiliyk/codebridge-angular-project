@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArticlePageComponent } from './article-page.component';
 import { RouterModule, Routes } from '@angular/router';
-import { CoreModule } from '../core/core.module';
+import { CoreModule } from '../../core/core.module';
+
+
+import { ArticlePageComponent } from './article-page.component';
+import { MaterialModule } from 'src/app/shared/material.module';
 
 const routes: Routes = [{
   path: '',
@@ -15,6 +18,7 @@ const routes: Routes = [{
     CommonModule,
     RouterModule.forChild(routes),
     CoreModule,
+    MaterialModule
   ],
   declarations: [ArticlePageComponent]
 })

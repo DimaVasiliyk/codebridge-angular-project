@@ -1,4 +1,8 @@
-<div class="page-wrapper" *ngIf="page$ | async as page">
+<div class="loading" *ngIf="!(page$ | async)?.title">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="page-wrapper" *ngIf="(page$ | async) as page">
   <div class="header-image" [style.background-image]="'url(' + page.image_url + ')'">
   </div>
   <div class="wrapper">

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HomePageService } from '../core/servise/homePage.service';
 import { Select, Store } from '@ngxs/store';
 import { Observable, ReplaySubject, debounceTime, takeUntil } from 'rxjs';
-import { HomePageState } from '../core/storage/store/homepage.state';
-import { GetAllPages } from '../core/storage/action/homepage.action';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
+import { GetAllPages } from 'src/app/core/storage/action/homepage.action';
+import { HomePageState } from 'src/app/core/storage/store/homepage.state';
+
+
 
 @Component({
   selector: 'app-homepage',
@@ -22,7 +24,7 @@ export class HomepageComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.store.dispatch(new GetAllPages());
     this.searchForm.valueChanges.pipe(debounceTime(500)).pipe(takeUntil(this.destroyed$)).subscribe((inputValue) => { this.store.dispatch(new GetAllPages(inputValue.search)) });
   }

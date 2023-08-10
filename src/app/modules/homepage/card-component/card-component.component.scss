@@ -5,11 +5,15 @@
 .card-wrapper {
   display: grid;
   grid-template-columns: 400px 400px 400px;
+  max-width: 1200px;
   grid-column-gap: 45px;
   grid-row-gap: 38px;
   border: none;
 
-  .example-card {
+
+
+
+  .card {
     max-width: 400px;
     height: 530px;
     background: white;
@@ -19,7 +23,7 @@
     border: 2px solid #eaeaea;
     border-radius: 5px;
     .mat-image {
-      width: 400px;
+      width: 396px;
       height: 217px;
     }
 
@@ -81,7 +85,20 @@
       }
     }
   }
+
 }
+
+  @media (max-width: 1800px) {
+    .card-wrapper { grid-template-columns: repeat(3, 2fr); }
+  }
+  @media (max-width: 1400px) {
+    .card-wrapper { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 1000px) {
+    .card-wrapper { grid-template-columns: repeat(1, 1fr); }
+  }
+  
+
 
 ::ng-deep{
   .highlight{
